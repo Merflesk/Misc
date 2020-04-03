@@ -15,6 +15,6 @@ int main()
 
 
     // Print the random number:
-    printf("%d", nTheNumber);
+    printf("%d\n", nTheNumber);
     return 0;
 }
