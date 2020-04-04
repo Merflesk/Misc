@@ -26,17 +26,28 @@ int main()
     printf("%d\n", nSecretNum);
 
     /* Start of the game: while loop */
-    int nRound = 1;
+    int nRound = 1; // TODO remove this so player doesn't see the correct num.
     while ( nRound <= nTries && win != 1){
         printf("Please guess a number between 0 and 99: ");
         scanf("%d", &nGuess);
 
         if (nGuess == nSecretNum){
             // The player won
-            printf("Eeey, you guessed it! Good job!\n ");
+            // printf("Eeey, you guessed it! Good job!\n ");
             win = 1; // This will break us out of the while loop
         } else {
             printf("I'm sorry, that's not it. You have %d tries left.\n", (nTries - nRound));
+            // TODO
+            // Add hints to the player
+            int nGuessSecretDelta = nGuess -nSecretNum; // Find the diff between guess and secret
+            printf("%d\n",nGuessSecretDelta);
+            // Display hint to user if their guess was too low or too high
+            if (nGuessSecretDelta > 0){
+                printf("Hint: Guess a lower number.\n");
+            } else if (nGuessSecretDelta < 0){
+                printf("Hint: Guess a higher number.\n");
+            }
+
         }
         nRound ++;
     }
@@ -50,3 +61,28 @@ int main()
 
     return 0;
 }
+
+
+/* Junk section */
+            /*switch (nGuessSecretDelta)
+            {
+            // If diff between guess and secret is greater than 40 in either direction:
+            case nGuessSecretDelta > 40 :
+                printf("Your guess is too low.\n");
+                break;
+            case nGuessSecretDelta < -40 :
+                printf("Your guess is too high.\n");
+                break;
+            case nGuessSecretDelta <= 10 :
+            case nGuessSecretDelta >= -10 :
+                printf("You are less than 10 away!\n");
+                break;
+            case nGuessSecretDelta >= 9 :
+                printf("Guess a little higher...\n");
+                break;
+            case nGuessSecretDelta <= -9 :
+                printf("Guess a little lower...\n");
+                break;
+            default:
+                break;
+            } */
