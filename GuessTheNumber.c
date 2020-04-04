@@ -23,7 +23,7 @@ int main()
     srand(time(0)); 
     nSecretNum = rand() % 100; // we add % 100 to set range from 0 to 99
     // Print random number:
-    printf("%d\n", nSecretNum);
+    // printf("%d\n", nSecretNum);
 
     /* Start of the game: while loop */
     int nRound = 1; // TODO remove this so player doesn't see the correct num.
@@ -37,22 +37,21 @@ int main()
             win = 1; // This will break us out of the while loop
         } else {
             printf("I'm sorry, that's not it. You have %d tries left.\n", (nTries - nRound));
-            // TODO
+
             // Add hints to the player
             int nGuessSecretDelta = nGuess -nSecretNum; // Find the diff between guess and secret
-            printf("%d\n",nGuessSecretDelta);
+            // printf("%d\n",nGuessSecretDelta);
             // Display hint to user if their guess was too low or too high
             if (nGuessSecretDelta > 0){
                 printf("Hint: Guess a lower number.\n");
             } else if (nGuessSecretDelta < 0){
                 printf("Hint: Guess a higher number.\n");
             }
-
         }
         nRound ++;
     }
     if (nRound > nTries && win != 1){
-        printf("You lose, no more tries left.\n");
+        printf("You lose, you ran out of guesses!\n");
     } else {
         printf("You win! You guessed my secret number: %d\n", nSecretNum);
     }
